@@ -7,3 +7,5 @@ class Solution {
         return ans;
     }
 }` `
+
+// Discuss: https://leetcode.com/explore/challenge/card/may-leetcoding-challenge/534/week-1-may-1st-may-7th/3317/discuss/608079/Java-Easy-to-Understand-O(S+J)-time-and-O(1)-space-solution
