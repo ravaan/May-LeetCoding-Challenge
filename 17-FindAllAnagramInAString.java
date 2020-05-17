@@ -25,10 +25,14 @@ class Solution {
         return ans;
     }
 
-    public boolean isSame(int[] x, int[] y) {
-        for (int i = 0; i < 26; i++)
-            if (x[i] != y[i])
-                return false;
-        return true;
-    }
+//    public boolean isSame(int[] x, int[] y) {
+//        int sum = 0;
+//        for (int i = 0; i < 26; i++) {
+//            if (x[i] != y[i])
+//                return false;
+//            sum += x[i];
+//            if (sum == lp) return true;
+//        }
+//        return true;
+//    }
 }
