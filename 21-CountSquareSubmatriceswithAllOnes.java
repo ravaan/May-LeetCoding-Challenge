@@ -13,7 +13,7 @@ class Solution {
                 ans += m[i][j];
             }
         }
-        for (int[] a : m) System.out.println(Arrays.toString(a));
+
         return ans;
     }
 
