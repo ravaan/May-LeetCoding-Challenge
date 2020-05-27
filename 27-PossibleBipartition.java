@@ -12,32 +12,34 @@ class Solution {
         int row = dislikes.length;
         if (row == 0) return true;
 
-        //build the adjMatrix
+
+        HashMap<Integer, ArrayList<Integer>> adjList = new HashMap<>();
+        //build the adjList
         for (int i = 0; i < row; i++) {
-            for (int j = 0; j < 2; j++) {
-                int x = dislikes[i][0];
-                int y = dislikes[i][1];
-                adjMat[x][y] = 1;
-                adjMat[y][x] = 1;
-            }
+            int x = dislikes[i][0];
+            int y = dislikes[i][1];
+            ArrayList<Integer> xl = adjList.getOrDefault(x, new ArrayList<Integer>());
+            ArrayList<Integer> yl = adjList.getOrDefault(y, new ArrayList<Integer>());
+            xl.add(y);
+            adjList.put(x, xl);
+            yl.add(x);
+            adjList.put(y, yl);
         }
-        // for(int r[]: adjMat) {
-        //     System.out.println(Arrays.toString(r));
-        // }
+        // System.out.print(adjList.toString());
         for (int i = 1; i < N + 1; i++) {
             if (!visited[i])
-                dfs(adjMat, i, 0, 1);
+                dfs(adjList, i, 0, 1);
         }
         return ans;
 
     }
 
-    public void dfs(int[][] adjMat, int vertex, int parent, int level) {
+    public void dfs(HashMap<Integer, ArrayList<Integer>> adjMat, int vertex, int parent, int level) {
         if (!ans) return;
         visited[vertex] = true;
         levels[vertex] = level;
-        for (int neighbour = 1; neighbour < N + 1; neighbour++) {
-            if (adjMat[vertex][neighbour] == 0) continue;
+        ArrayList<Integer> edges = adjMat.getOrDefault(vertex, new ArrayList<Integer>());
+        for (int neighbour : edges) {
             if (neighbour == parent) continue;
 
             if (!visited[neighbour]) {
